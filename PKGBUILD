@@ -1,8 +1,8 @@
 # vim:ts=4:sw=4:expandtab
 # Maintainer: milaq <micha.laqua@gmail.com>
 pkgname=dmenu-height
-pkgver=5.0
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="Generic menu for X, with added height setting"
 arch=('x86_64')
 url="http://tools.suckless.org/dmenu/"
@@ -12,7 +12,7 @@ depends=('sh' 'libxinerama' 'libxft' 'freetype2')
 conflicts=('dmenu')
 source=("https://dl.suckless.org/tools/dmenu-$pkgver.tar.gz"
         "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.0.diff")
-sha256sums=('fe18e142c4dbcf71ba5757dbbdea93b1c67d58fc206fc116664f4336deef6ed3'
+sha256sums=('1f4d709ebba37eb7326eba0e665e0f13be4fa24ee35c95b0d79c30f14a348fd5'
             '7e8584ba30da1a5dcfa9c357298ecf8eb173c6396df21d8bc14cdaef937794b6')
 prepare() {
     cd "$srcdir/dmenu-$pkgver"
