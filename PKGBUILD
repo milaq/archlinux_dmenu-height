@@ -1,8 +1,8 @@
 # vim:ts=4:sw=4:expandtab
 # Maintainer: milaq <micha.laqua@gmail.com>
-pkgname=dmenu-height
+pkgname=dmenu-mlq
 pkgver=5.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Generic menu for X, with user patches for milaq"
 arch=('x86_64')
 url="http://tools.suckless.org/dmenu/"
