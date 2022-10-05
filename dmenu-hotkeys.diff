@@ -1,0 +1,40 @@
+--- src/dmenu.c.orig	2022-02-11 12:31:56.000000000 +0100
++++ src/dmenu.c	2022-10-05 12:27:23.503674808 +0200
+@@ -400,6 +400,16 @@
+ 		default:
+ 			return;
+ 		}
++	} else if (ev->state & ShiftMask) {
++		switch(ksym) {
++		case XK_ISO_Left_Tab:
++			ksym = XK_Up;
++			break;
++		case XK_Insert:
++			XConvertSelection(dpy, (ev->state & ShiftMask) ? clip : XA_PRIMARY,
++			                  utf8, utf8, win, CurrentTime);
++			return;
++		}
+ 	}
+ 
+ 	switch(ksym) {
+@@ -499,19 +509,12 @@
+ 		/* fallthrough */
+ 	case XK_Down:
+ 	case XK_KP_Down:
++	case XK_Tab:
+ 		if (sel && sel->right && (sel = sel->right) == next) {
+ 			curr = next;
+ 			calcoffsets();
+ 		}
+ 		break;
+-	case XK_Tab:
+-		if (!sel)
+-			return;
+-		strncpy(text, sel->text, sizeof text - 1);
+-		text[sizeof text - 1] = '\0';
+-		cursor = strlen(text);
+-		match();
+-		break;
+ 	}
+ 
+ draw:
