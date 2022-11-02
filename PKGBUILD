@@ -2,7 +2,7 @@
 # Maintainer: milaq <micha.laqua@gmail.com>
 pkgname=dmenu-mlq
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic menu for X, with user patches for milaq"
 arch=('x86_64')
 url="http://tools.suckless.org/dmenu/"
