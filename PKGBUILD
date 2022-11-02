@@ -11,15 +11,15 @@ provides=('dmenu')
 depends=('sh' 'libxinerama' 'libxft' 'freetype2')
 conflicts=('dmenu')
 source=("https://dl.suckless.org/tools/dmenu-$pkgver.tar.gz"
-        "dmenu-lineheight.diff"
-        "dmenu-hotkeys.diff")
+        "dmenu-lineheight.patch"
+        "dmenu-hotkeys.patch")
 sha256sums=('d4d4ca77b59140f272272db537e05bb91a5914f56802652dc57e61a773d43792'
             'SKIP'
             'SKIP')
 prepare() {
     cd "$srcdir/dmenu-$pkgver"
-    patch -p1 -i "$srcdir/dmenu-lineheight.diff"
-    patch -p1 -i "$srcdir/dmenu-hotkeys.diff"
+    patch -p1 -i "$srcdir/dmenu-lineheight.patch"
+    patch -p1 -i "$srcdir/dmenu-hotkeys.patch"
 }
 
 build() {
