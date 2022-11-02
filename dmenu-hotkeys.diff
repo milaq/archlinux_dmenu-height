@@ -1,17 +1,30 @@
-From 508b84c97b00bca06f98edebf5ecd3f16db8ec24 Mon Sep 17 00:00:00 2001
+From 1429a54e2bfa641ac9eeffb851b0837e248ac5d3 Mon Sep 17 00:00:00 2001
 From: milaq <micha.laqua@gmail.com>
 Date: Wed, 19 Oct 2022 18:59:10 +0200
-Subject: [PATCH] Use TAB to navigate and Shift-Insert to paste
+Subject: [PATCH] Use TAB as hotkey anchor
 
+also add Shift-Insert to paste
 ---
- dmenu.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ dmenu.c | 28 ++++++++++++++++++++--------
+ 1 file changed, 20 insertions(+), 8 deletions(-)
 
 diff --git a/dmenu.c b/dmenu.c
-index 5e694ec..d5863af 100644
+index 5e694ec..ed54086 100644
 --- a/dmenu.c
 +++ b/dmenu.c
-@@ -410,6 +410,16 @@ keypress(XKeyEvent *ev)
+@@ -407,9 +407,28 @@ keypress(XKeyEvent *ev)
+ 		case XK_j: ksym = XK_Next;  break;
+ 		case XK_k: ksym = XK_Prior; break;
+ 		case XK_l: ksym = XK_Down;  break;
++		case XK_Tab:
++			puts((sel && !(ev->state & ShiftMask)) ? sel->text : text);
++			if (!(ev->state & ControlMask)) {
++				cleanup();
++				exit(0);
++			}
++			if (sel)
++				sel->out = 1;
++			break;
  		default:
  			return;
  		}
@@ -28,7 +41,7 @@ index 5e694ec..d5863af 100644
  	}
  
  	switch(ksym) {
-@@ -509,19 +519,12 @@ insert:
+@@ -509,19 +528,12 @@ insert:
  		/* fallthrough */
  	case XK_Down:
  	case XK_KP_Down:
